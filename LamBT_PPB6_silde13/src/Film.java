@@ -43,13 +43,7 @@ private  Category category;
         this.ranking = ranking;
     }
 
-    @Override
-    public String toString() {
-        return "Film{" +
-                "id='" + id + '\'' +
-                ", title='" + title + '\'' +
-                ", category=" + category +
-                ", ranking=" + ranking +
-                '}';
+    public  void xuat(){
+
     }
 }

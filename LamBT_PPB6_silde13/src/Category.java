@@ -1,3 +1,3 @@
 public enum Category {
-    HORROR,COMEDY,DOCUMENTATRY;
+    HORROR,COMEDY,DOCUMENTARY;
 }

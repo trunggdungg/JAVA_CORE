@@ -15,10 +15,7 @@ public class Movie extends  Film{
     }
 
     @Override
-    public String toString() {
-        return super.toString()+
-                "Movie{" +
-                "time=" + time +
-                '}';
+    public void xuat() {
+        System.out.println("id - "+ getId() +" - " + "Tên phim - "+getTitle()+" - "+" - "+"Thể loại - "+getCategory()+" - "+" - " +"Rank - "+getRanking()+" - "+" - "+"Thời lượng của phim - "+getTime());
     }
 }

@@ -25,11 +25,7 @@ public class Series extends Film{
     }
 
     @Override
-    public String toString() {
-        return super.toString()+
-                "Series{" +
-                "soTap=" + soTap +
-                ", timeAvg=" + timeAvg +
-                '}';
+    public void xuat() {
+        System.out.println("id -"+ getId() +"-" + "Tên phim - "+getTitle()+"Thể loại - "+getCategory() +"Rank - "+getRanking()+"Số tập - "+getSoTap()+"Thời lượng trung bình - "+getTimeAvg());
     }
 }
