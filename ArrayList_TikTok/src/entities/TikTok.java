@@ -7,15 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TikTok {
-    private ArrayList<Idol> idols;
-    private ArrayList<Song> songs;
+    private List<Idol> idols;
+    private List<Song> songs;
 
-    public TikTok(ArrayList<Idol> idols, ArrayList<Song> songs) {
+    public TikTok(List<Idol> idols, List<Song> songs) {
         this.idols = idols;
         this.songs = songs;
     }
 
-    public ArrayList<Idol> getIdols() {
+    public List<Idol> getIdols() {
         return idols;
     }
 
@@ -23,7 +23,7 @@ public class TikTok {
         this.idols = idols;
     }
 
-    public ArrayList<Song> getSongs() {
+    public List<Song> getSongs() {
         return songs;
     }
 
