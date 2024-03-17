@@ -2,45 +2,54 @@ package service;
 
 import entities.Bank;
 import entities.Customer;
-import entities.TypeCustomer;
+import entities.InputTable;
+import statics.CustomerType;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-public class BankService {
+public class BankService implements InputTable {
     public List<Bank> banks = new ArrayList<>();
 
-    public void inputInforBank() {
-        Scanner scanner = new Scanner(System.in);
-
-        try {
-            System.out.println("Nhập tên ngân hàng: ");
-            String name = scanner.nextLine();
-
-            // Kiểm tra nếu tên ngân hàng chứa chữ số
-            if (name.matches(".*\\d.*")) {
-                throw new InputMismatchException();
-            }
-
+    public void inputInfo() {
+        int numberOfBank;
+        while (true){
             try {
-                System.out.println("Nhập lãi suất: ");
-                double rate =new Scanner(System.in).nextDouble();
-
-
-                Bank bank = new Bank(name, rate);
-                banks.add(bank);
-            } catch (InputMismatchException e) {
-                System.out.println("Lỗi: Vui lòng nhập số cho lãi suất.");
+                System.out.println("Bạn thêm mới bao nhiêu ngân hàng: ");
+                numberOfBank = new Scanner(System.in).nextInt();
+                if(numberOfBank>=1){
+                    break;
+                }
+            }catch (InputMismatchException e){
+                System.out.println("Vui lòng nhập số lượng ngân hàng phù hợp!");
             }
-        } catch (InputMismatchException e) {
-            System.out.println("Lỗi: Định dạng dữ liệu không hợp lệ cho tên ngân hàng.");
+        }
+
+        for (int i = 0; i < numberOfBank; i++) {
+            System.out.println("Nhập thông tin ngân hàng thứ " + (i + 1));
+            Bank bank = new Bank();
+            System.out.println("Nhập tên ngân hàng: ");
+            bank.setNameBank(new Scanner(System.in).nextLine());
+            Double InterRate;
+            while (true){
+                try {
+                    System.out.println("Nhập lãi suất : ");
+                    InterRate = (new Scanner(System.in).nextDouble());
+                    if(InterRate >0){
+                        bank.setRate(InterRate);
+                        break;
+                    }
+                }catch (InputMismatchException e){
+                    System.out.println("Vui lòng nhập giá trị phù hợp!");
+                }
+            }
+            banks.add(bank);
         }
     }
-
-    public void outputInfoBank(List<Bank> bankList) {
-        System.out.println("Danh sách khách hàng: ");
+    public void outputInfoBank (List < Bank > bankList) {
+        System.out.println("Danh sách ngân hàng: ");
         for (Bank bank : bankList) {
             System.out.println(bank);
         }

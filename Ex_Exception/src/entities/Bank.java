@@ -6,10 +6,9 @@ public class Bank {
     private String nameBank;
     private double rate;
 
-    public Bank( String nameBank, double rate) {
+    public Bank( ) {
         this.idBank = idAuto++;
-        this.nameBank = nameBank;
-        this.rate = rate;
+
     }
 
     public int getIdBank() {

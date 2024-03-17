@@ -1,23 +1,18 @@
 package entities;
 
+import statics.CustomerType;
+
 public class Customer {
     private static int idAuto = 10000;
     private int idCustomer;
     private String name;
     private String address;
     private String phone;
-    private String typeCustomer;
+    private CustomerType typeCustomer;
 
-    public Customer(String name, String address, String phone, TypeCustomer typeCustomer) {
+    public Customer() {
         this.idCustomer = idAuto++;
-        this.name = name;
-        this.address = address;
-        if (phone.matches("\\d{10}")) {
-            this.phone = phone;
-        } else {
-            throw new IllegalArgumentException("Số điện thoại phải có đúng 10 chữ số.");
-        }
-        this.typeCustomer = String.valueOf(typeCustomer);
+
     }
 
     public int getIdCustomer() {
@@ -52,11 +47,11 @@ public class Customer {
         this.phone = phone;
     }
 
-    public String getTypeCustomer() {
+    public CustomerType getTypeCustomer() {
         return typeCustomer;
     }
 
-    public void setTypeCustomer(String typeCustomer) {
+    public void setTypeCustomer(CustomerType typeCustomer) {
         this.typeCustomer = typeCustomer;
     }
 
@@ -67,7 +62,7 @@ public class Customer {
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 ", phone='" + phone + '\'' +
-                ", typeCustomer='" + typeCustomer + '\'' +
+                ", typeCustomer='" + typeCustomer.value + '\'' +
                 '}';
     }
 }

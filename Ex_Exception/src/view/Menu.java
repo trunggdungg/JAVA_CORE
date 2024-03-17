@@ -1,13 +1,15 @@
 package view;
 
 import entities.Bank;
-import entities.Constant;
+import entities.SavingAccountManagerment;
+import statics.Constant;
 import entities.Customer;
 import entities.SavingAccount;
 import service.BankService;
 import service.CustomerService;
-import service.SavingAccountService;
+import service.SavingAccountManagementService;
 
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -18,8 +20,11 @@ public class Menu {
         BankService bankService = new BankService();
         List<Bank> banks = bankService.banks;
         List<Customer> customers = customerService.customers;
-        SavingAccountService savingAccountService = new SavingAccountService();
+        SavingAccountManagementService savingAccountService = new SavingAccountManagementService();
         List<SavingAccount> savingAccounts = savingAccountService.savingAccounts;
+
+        SavingAccountManagementService savingAccountManagementService = new SavingAccountManagementService();
+        List<SavingAccountManagerment> savingAccount = savingAccountManagementService.savingAccountManagerments;
         while (true) {
             int choice;
             do {
@@ -36,17 +41,20 @@ public class Menu {
                 System.out.println("0. Thoát");
                 System.out.println("--------------------------");
 
-                System.out.println("Mời bạn chọn: ");
-                choice = new Scanner(System.in).nextInt();
-                if (choice >= 0 && choice <= 9) {
-                    break;
+                try {
+                    System.out.println("Mời bạn chọn: ");
+                    choice = new Scanner(System.in).nextInt();
+                    if (choice >= 0 && choice <= 9) {
+                        break;
+                    }
+                }catch (InputMismatchException e){
+                    System.out.println("Vui lòng chọn hợp lý!");
                 }
-                System.out.println("Vui lòng chọn hợp lý!");
             } while (true);
 
             switch (choice) {
                 case Constant.INPUT_INFO_CUSTOMER:
-                    customerService.inputInforCustomer();
+                    customerService.inputInfo();
                     break;
 
                 case Constant.OUTPUT_INFO_CUSTOMER:
@@ -54,7 +62,7 @@ public class Menu {
                     break;
 
                 case Constant.INPUT_INFO_BANK:
-                    bankService.inputInforBank();
+                    bankService.inputInfo();
                     break;
 
                 case Constant.OUTPUT_INFO_BANK:
@@ -67,13 +75,13 @@ public class Menu {
                     savingAccountService.outputListAccount(savingAccounts);
                     break;
                 case Constant.SORT_BY_NAME:
-                    savingAccountService.sortByCustomerName(savingAccounts);
+                    savingAccountService.sortByCustomerName(savingAccount);
                     break;
                 case Constant.SORT_BY_MONEY:
-                    savingAccountService.sortByDepositAmount(savingAccounts);
+//                    savingAccountService.sortByDepositAmount(savingAccounts);
                     break;
                 case Constant.STATISTICS:
-
+// em chưa lam xong ạ
                     break;
 
                 case Constant.EXIT:

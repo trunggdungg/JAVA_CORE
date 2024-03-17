@@ -1,22 +1,18 @@
 package entities;
 
+import java.time.LocalDate;
+
 public class SavingAccount {
-    private Customer customer;
     private Bank bank;
-    private double soTienGui;
+    private double amount;
 
-    public SavingAccount(Customer customer, Bank bank, double soTienGui) {
-        this.customer = customer;
+    private LocalDate createdDate;
+
+
+    public SavingAccount(Bank bank, double amount) {
         this.bank = bank;
-        this.soTienGui = soTienGui;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+        this.amount = amount;
+        this.createdDate = LocalDate.now();
     }
 
     public Bank getBank() {
@@ -27,20 +23,28 @@ public class SavingAccount {
         this.bank = bank;
     }
 
-    public double getSoTienGui() {
-        return soTienGui;
+    public double getAmount() {
+        return amount;
     }
 
-    public void setSoTienGui(double soTienGui) {
-        this.soTienGui = soTienGui;
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public LocalDate getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(LocalDate createdDate) {
+        this.createdDate = createdDate;
     }
 
     @Override
     public String toString() {
-        return "saveBookMoney{" +
-                "customer=" + customer +
-                ", bank=" + bank +
-                ", soTienGui=" + soTienGui +
+        return "SavingAccount{" +
+                "bank=" + bank +
+                ", amount=" + amount +
+                ", createdDate=" + createdDate +
                 '}';
     }
 }
