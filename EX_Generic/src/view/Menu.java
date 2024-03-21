@@ -8,6 +8,7 @@ import service.MemberService;
 import service.PositionService;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -16,6 +17,7 @@ public class Menu {
   public   PositionService positionService = new PositionService();
   public   AssignmentService  assignmentService =new AssignmentService();
     public void MenuMain(){
+        int choice ;
         while (true){
             System.out.println("----------Menu---------");
             System.out.println("1. Nhập danh sách thành viên. ");
@@ -30,35 +32,46 @@ public class Menu {
             System.out.println("0. Thoát");
             System.out.println("-----------");
             System.out.println("Xin mời chọn: ");
-            int choice = new Scanner(System.in).nextInt();
-            switch (choice){
-                case 1:
-                    memberService.inputInfo();
-                    break;
-                case 2:
-                    memberService.outputInfoMember(memberService.members);
-                    break;
-                case 3:
-                    positionService.inputInfoPosition();
-                    break;
-                case 4:
-                    positionService.outputInfoPosition(positionService.positions);
-                    break;
-                case 5:
-                    assignmentService.inputAssignment(memberService.members,positionService.positions);
-                    break;
-                case 6:
-                    assignmentService.ouputAssignment(assignmentService.assignments);
-                    break;
-                case 7:
-                    assignmentService.sortAssignmentsByName();
-                    break;
-                case 8:
-                    assignmentService.sortAssignmentByDayWorked();
-                    break;
-                case 0:
-                    return;
+            try {
+              choice  = new Scanner(System.in).nextInt();
+                if(choice<0 || choice>9){
+                    System.out.println("Vui lòng chọn giá trị hợp lệ!");
+                    continue;
+                }
+                switch (choice){
+                    case 1:
+                        memberService.inputInfo();
+                        break;
+                    case 2:
+                        memberService.outputInfoMember(memberService.members);
+                        break;
+                    case 3:
+                        positionService.inputInfoPosition();
+                        break;
+                    case 4:
+                        positionService.outputInfoPosition(positionService.positions);
+                        break;
+                    case 5:
+                        assignmentService.inputAssignment(memberService.members,positionService.positions);
+                        break;
+                    case 6:
+                        assignmentService.ouputAssignment(assignmentService.assignments);
+                        break;
+                    case 7:
+                        assignmentService.sortAssignmentsByName();
+                        break;
+                    case 8:
+                        assignmentService.sortAssignmentByDayWorked();
+                        break;
+                    case 9:
+                        assignmentService.calculateSalary(memberService.members ,positionService.positions);
+                        break;
+                    case 0:
+                        return;
 
+                }
+            }catch (InputMismatchException e){
+                System.out.println("Vui  lòng nhập số!");
             }
         }
     }
