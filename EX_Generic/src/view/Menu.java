@@ -13,13 +13,8 @@ import java.util.Scanner;
 
 public class Menu {
    public MemberService memberService = new MemberService();
-    public List<Member> members = memberService.members;
-    PositionService positionService = new PositionService();
-    public List<Position> positions = positionService.positions;
-
-    AssignmentService  assignmentService =new AssignmentService();
-    public List<Assignment> assignments = assignmentService.assignments;
-
+  public   PositionService positionService = new PositionService();
+  public   AssignmentService  assignmentService =new AssignmentService();
     public void MenuMain(){
         while (true){
             System.out.println("----------Menu---------");
@@ -41,19 +36,19 @@ public class Menu {
                     memberService.inputInfo();
                     break;
                 case 2:
-                    memberService.outputInfoMember(members);
+                    memberService.outputInfoMember(memberService.members);
                     break;
                 case 3:
                     positionService.inputInfoPosition();
                     break;
                 case 4:
-                    positionService.outputInfoPosition(positions);
+                    positionService.outputInfoPosition(positionService.positions);
                     break;
                 case 5:
-                    assignmentService.inputAssignment(members,positions);
+                    assignmentService.inputAssignment(memberService.members,positionService.positions);
                     break;
                 case 6:
-                    assignmentService.ouputAssignment(assignments);
+                    assignmentService.ouputAssignment(assignmentService.assignments);
                     break;
                 case 7:
                     assignmentService.sortAssignmentsByName();
